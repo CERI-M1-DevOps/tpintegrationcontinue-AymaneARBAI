@@ -1,6 +1,9 @@
 name: Java CI with Maven - Test and package
 
-on: [pull_request] # Ce workflow se déclenche sur un push dans le dépôt
+on:
+  pull_request:     
+    branches:
+      - main
 
 jobs:
   Salutations: # Nom du job : Salutations
@@ -17,4 +20,4 @@ jobs:
           java-version: '21'
       
       - name: Package avec maven
-        run: mvn –B package
+        run: mvn -B package
