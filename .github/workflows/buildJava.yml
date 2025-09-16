@@ -12,9 +12,9 @@ jobs:
 
       - name: L'heure de salutation # affiche l'heure de la précédente tâche
         uses: actions/setup-java@v4
-          with:
-            distribution: 'temurin' # See 'Supported distributions' for available options
-            java-version: '21'
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
       
       - name: Package avec maven
         run: mvn –B package
