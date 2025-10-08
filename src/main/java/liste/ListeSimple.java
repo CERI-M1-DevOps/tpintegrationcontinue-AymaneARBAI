@@ -31,17 +31,19 @@ public class ListeSimple {
     }
 
     public String toString() {
+        if (tete == null) return "[]"; 
+    
         StringBuilder sb = new StringBuilder("ListeSimple(");
         Noeud n = tete;
         while (n != null) {
             sb.append(n);
             n = n.getSuivant();
-            if (n != null)
-                sb.append(", ");
+            if (n != null) sb.append(", ");
         }
         sb.append(")");
         return sb.toString();
     }
+    
 
     public void supprimePremier(Object element) {
         if (tete != null) {
