@@ -8,11 +8,22 @@ public class ListeSimple {
         return size;
     }
 
+    /**
+    * ajoute element en tete de liste
+    * @param element entier à ajouter en tete de chaine
+    * @return rien
+    */
     public void ajout(int element) {
         tete = new Noeud(element, tete);
         size++;
     }
 
+    /**
+     * Remplace la première occurrence d'un élément par une nouvelle valeur.
+     * @param element valeur recherchée
+     * @param nouvelleValeur valeur de remplacement
+     * @return rien
+     */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null && courant.getElement() != element)
@@ -21,6 +32,13 @@ public class ListeSimple {
             courant.setElement(nouvelleValeur);
     }
 
+
+    /**
+     * Remplace toutes les occurrences d'un élément par une nouvelle valeur.
+     * @param element valeur recherchée
+     * @param nouvelleValeur valeur de remplacement
+     * @return rien
+     */
     public void modifieTous(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null) {
@@ -30,6 +48,10 @@ public class ListeSimple {
         }
     }
 
+    /**
+     * Retourne une représentation textuelle de la liste.
+     * @return chaîne représentant la liste (vide: "[]", sinon "ListeSimple(...)")
+     */
     public String toString() {
         if (tete == null) return "[]"; 
     
@@ -144,5 +166,5 @@ public class ListeSimple {
     }
 
 
-    
+
 }
