@@ -1,33 +1,18 @@
 name: Documentation
 
 on:
-  pull_request:
-    types: [closed]     # se déclenche quand la PR est fermée (donc potentiellement mergée)
-    branches: [main]
+  pull_request:     
+    branches:
+      - main
 
-permissions:
-  contents: write       # nécessaire pour pousser sur gh-pages
+
 
 jobs:
-  publish-javadoc:
+  if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
-
-      - name: Générer la Javadoc
-        run: mvn -B -ntp javadoc:javadoc
-
-      - name: Déployer sur gh-pages
+      - name: generation documentation
+        run: mvn -B javadoc::javadoc
+      - name: deployer documentation
         uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./target/site/apidocs
